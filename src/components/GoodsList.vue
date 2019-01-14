@@ -10,9 +10,9 @@
                         {{item.title}}
                     </div>
                     <div class="content">
-                        <i class="cubeic-remove"  @click.stop.prevent="removeCart(item)"></i>
+                        <i class="cubeic-remove"  @click.stop.prevent="removeCart($event,item)"></i>
                         <span>{{item.count}}人购买</span>
-                        <i class="cubeic-add" @click.stop.prevent="addCart(item)"></i>
+                        <i class="cubeic-add" @click.stop.prevent="addCart($event,item)"></i>
                     </div>
                 </div>
             </router-link>
@@ -27,8 +27,10 @@ export default {
         // console.log(this.data)
     },
     methods:{
-        addCart(item){
+        addCart(event,item){
             this.$store.commit('addCart',item)
+
+            this.$emit('addcart',event.target)
             // console.log(this.$store.state.cart)
         },
         removeCart(item){

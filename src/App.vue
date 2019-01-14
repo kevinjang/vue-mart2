@@ -6,6 +6,8 @@
       <router-link to="/login">Login</router-link> 
       <span v-if="isLogin" @click="logout">退出</span>
     </div> -->
+    
+    <router-view/>
     <cube-tab-bar 
       v-model="selectLabel"
       :data="tabs"
@@ -20,7 +22,6 @@
       </cube-tab>
       
     </cube-tab-bar>
-    <router-view/>
   </div>
 </template>
 <script>
@@ -80,6 +81,7 @@ export default {
   -moz-osx-font-smoothing grayscale
   text-align center
   color #2c3e50
+  height 750px
 
 #nav
   padding 30px
@@ -93,4 +95,10 @@ export default {
   padding: 5px
   border-radius 45%
   color white
+.cube-tab-bar
+  position fixed
+  left 0
+  bottom  0
+  right 0
+  background #edf0f4
 </style>

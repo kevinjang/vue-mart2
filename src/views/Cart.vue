@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 export default {
     name:'Cart',
     data(){
@@ -48,9 +48,11 @@ export default {
     },
     computed:{
         ...mapGetters({
-            totalPrice:'totalPrice',
+            totalPrice:'totalPrice'
+        }),
+        ...mapState({
             token:'token'
-        })
+    })
     }
 }
 </script>
