@@ -23,8 +23,7 @@
         <transition
         @before-enter="beforeEnter"
         @enter="enter"
-        @afterEnter="afterEnter"
-        >
+        @afterEnter="afterEnter">
             <div class="ball" v-show="ball.show">
               <div class="inner">
                 加
@@ -106,12 +105,16 @@ export default {
       // 获取点击的DOM
       const dom = this.ball.el
       const rect = dom.getBoundingClientRect()
-      console.log(rect.top,rect.left)
+      // console.log(rect.top,rect.left)
 
       const x = rect.left - window.innerWidth/2
       const y = -(window.innerHeight - rect.top - 30)
       el.style.display = ''
-      el.style.transform = `translate3d(${x}px,${y}px,0)`
+      el.style.transform = `translate3d(0,${y}px,0)`
+      // console.log(el.style.transform)
+      const inner = el.querySelector('.inner')
+      console.log(x)
+      inner.style.transform = `translate3d(${x}px,0,0)`
     },
     enter(el,done){
       // 强制进行一次重绘
@@ -119,6 +122,8 @@ export default {
       // 小球移动到初始位置
       // 小球移动到购物车位置
       el.style.transform = `translate3d(0,0,0)`
+      const inner = el.querySelector('.inner')
+      inner.style.transform = `translate3d(0,0,0)`
       el.addEventListener('transitionend',done)
 
     },
@@ -159,8 +164,9 @@ export default {
     bottom 10px
     z-index 200
     color red
-    transition all 1s cubeic-bezier(0.49, -0.29, 0.75, 0.41)
+    transition all 1s cubic-bezier(0.49, -0.29, 0.75, 0.41) 
     .inner
       width 16px
       height 16px
+      transition all 1s linear
 </style>
