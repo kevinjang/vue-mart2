@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="alert" v-if="showError">
+            {{message}}
+        </div>
         <cube-form
         :model="model"
         :schema="schema"
@@ -16,6 +19,8 @@ export default {
     name: 'Login',
     data(){
         return {
+            showError:false,
+            message:'',
             model:{
                 username: '',
                 passwd: ''
@@ -101,18 +106,21 @@ export default {
                     })
                     toast.show()
                 }else{
-                    const toast = this.$createToast({
-                        duration: 2000,
-                        type:'error',
-                        txt: ret.message || '未知错误'
-                    })
-                    toast.show()
+                    // const toast = this.$createToast({
+                    //     duration: 2000,
+                    //     type:'error',
+                    //     txt: ret.message || '未知错误'
+                    // })
+                    // toast.show()
+                    this.showError = true
+                    this.message=ret.message||'Unknown errors'
                 }
             }
         }
     }
 </script>
 
-<style>
-
+<style lang="stylus">
+.alert
+    color red
 </style>
