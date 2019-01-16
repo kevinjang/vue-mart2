@@ -3,7 +3,7 @@
     <k-header>
       <i class="cubeic-tag" @click="showCatg"></i>
     </k-header>
-    <cube-slide 
+    <cube-slide
     :data="slider">
       <cube-slide-item v-for="(item,index) in slider" :key="index">
         <img :src="item.img" class="slider-item" alt="" srcset="">
@@ -12,7 +12,7 @@
     <!-- <cube-button @click="showCatg">
       选择分类
     </cube-button> -->
-    <cube-drawer 
+    <cube-drawer
       ref="drawer1"
       :data="[drawList]"
       title="请选择分类"
@@ -64,7 +64,7 @@ export default {
       data:[],
       ball:{
         show:false,
-        el:null 
+        el:null
       }
     }
   },
@@ -111,9 +111,8 @@ export default {
       const y = -(window.innerHeight - rect.top - 30)
       el.style.display = ''
       el.style.transform = `translate3d(0,${y}px,0)`
-      // console.log(el.style.transform)
+
       const inner = el.querySelector('.inner')
-      console.log(x)
       inner.style.transform = `translate3d(${x}px,0,0)`
     },
     enter(el,done){
@@ -149,7 +148,7 @@ export default {
 }
 </script>
 <style lang="stylus">
-.slider-item 
+.slider-item
   width 100%
 .cubeic-tag
   top 0
@@ -164,7 +163,7 @@ export default {
     bottom 10px
     z-index 200
     color red
-    transition all 1s cubic-bezier(0.49, -0.29, 0.75, 0.41) 
+    transition all 1s cubic-bezier(0.49, -0.29, 0.75, 0.41)
     .inner
       width 16px
       height 16px
